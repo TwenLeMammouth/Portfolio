@@ -19,6 +19,8 @@ export function Earth({experiences, locations, trips}: Props) {
     lat: location.isNorthHemisphere ? location.lat : -location.lat ,
     lng: location.isEastSide ? location.long : -location.long ,
     color: '#12DD88',
+    name: location.city,
+    position: location.city == 'Clermont-Ferrand' || location.city == 'Brisbane' ? 'top' : 'bottom',
   }));
 
   const aData = trips.map((trip) => ({
@@ -26,20 +28,25 @@ export function Earth({experiences, locations, trips}: Props) {
     startLng: trip.from.isEastSide ? trip.from.long : -trip.from.long,
     endLat: trip.to.isNorthHemisphere ? trip.to.lat : -trip.to.lat,
     endLng: trip.to.isEastSide ? trip.to.long : -trip.to.long,
-    color: '#FFF',  
+    color: '#12DD88',  
   }))
 
   const globe = new ThreeGlobe()
-  .atmosphereColor('#12DD88')
+  .atmosphereColor('#AFE')
   .showGraticules(true)
   .globeImageUrl('./earthWpin/earth-dark.jpg')
   .bumpImageUrl('./earthWpin/earth-topology.png')
   .pointsData(pData)
-  .pointAltitude(0.08)
+  .pointAltitude(0.01)
   .pointRadius(0.08)
   .pointResolution(80)
   .pointColor('color')
   .pointsMerge(true)
+  .labelsData(pData)
+  .labelText('name')
+  .labelSize(1)
+  .labelDotRadius(0.2)
+  .labelDotOrientation('position')
   .arcsData(aData)
   .arcColor('color')
   .arcDashLength(0.8)
@@ -67,7 +74,7 @@ export function Earth({experiences, locations, trips}: Props) {
       <primitive
         object={globe}
         waitForGlobeReady
-        scale={0.04}
+        scale={0.035}
         position={[0, 0, 0]}
         rotation={[0, 0, 0]}
       />
