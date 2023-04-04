@@ -15,9 +15,9 @@ export default function WorkingExperience({experiences, locations, trips}: Props
   return (
     <div className='flex flex-row relative h-screen justify-evenly items-center'>
       <div className='relative w-full h-full z-0 border-2 border-cyan-300'>
-        {window && (
+        {/* {window && (
           <EarthCanvas experiences={ experiences } locations={ locations } trips={ trips } />
-        )}
+        )} */}
       </div>
       {/* <motion.div 
       initial={{ opacity: 0 }}
