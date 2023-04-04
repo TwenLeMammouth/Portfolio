@@ -9,8 +9,9 @@ type Props = {
 }
 
 export default function ExperienceCard({experience}: Props) {
+  console.log(experience)
   return (
-    <div className="flex flex-col rounded-lg items-center space-y-1 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[800px] snap-end bg-[#303030] p-5 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden">
+    <div className="flex flex-col rounded-lg items-center space-y-1 flex-shrink-0 w-[500px] md:w-[600px] snap-end bg-[#303030] p-5 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden">
         <motion.img
         initial={{y: -100, opacity: 0}}
         transition={{duration: 1.2}}
@@ -31,17 +32,22 @@ export default function ExperienceCard({experience}: Props) {
             )}
             
           </div>
-          <p className="uppercase py-3 text-gray-300">
-            {new Date(experience?.dateStarted).toDateString()} - {experience?.isCurrentlyWorkingHere 
-            ? "Present" 
-            : new Date(experience?.dateEnded).toDateString() }
-          </p>
+          <div className="flex flex-row w-full justify-between uppercase py-3 text-gray-300">
+            <p >
+              {new Date(experience?.dateStarted).toDateString()} - {experience?.isCurrentlyWorkingHere 
+              ? "Present" 
+              : new Date(experience?.dateEnded).toDateString()}
+            </p>
+            <p className='text-right'>
+              {experience?.location.city}
+            </p>
+
+          </div>
           <ul className="list-disc space-y-3 ml-5 text-lg overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-lg scrollbar-thumb-[#12DD88]/80">
             {experience?.points?.map((point, i)=> 
               <li key={i}>{point}</li>
             )}
           </ul>
-          <h4>{experience?.location.city}</h4>
         </div>
     </div>
   )

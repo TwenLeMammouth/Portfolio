@@ -83,7 +83,7 @@ export function Earth({experiences, locations, trips}: Props) {
 }
 
 export default function EarthCanvas({experiences, locations, trips}: Props) {
-  // console.log(experiences[0].location)
+  
   return (
     <Canvas
       frameloop="demand"
