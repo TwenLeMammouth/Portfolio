@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import ExperienceCard from 'components/ExperienceCard'
 import { Experience, Location, Trip } from 'typings';
 import dynamic from 'next/dynamic';
-// import EarthCanvas from './Earth';
 
 const EarthCanvas = dynamic(
   () => {
